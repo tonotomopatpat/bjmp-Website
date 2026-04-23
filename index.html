@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home — JailWatch PH</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- <link rel="stylesheet" href="css/map.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">JailWatch <span>PH</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="map.html" class="nav-link">Risk Map</a></li>
+                <!-- <li><a href="dashboard.html" class="nav-link">Dashboard</a></li> -->
+                <li><a href="clusters.html" class="nav-link">Clusters</a></li>
+                <!-- <li><a href="about.html" class="nav-link">About</a></li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <section class="main" id="main">
+        <div class="main-bg-pattern"></div>
+        <div class="main-container">
+            <div class="main-content">
+                <div class="main-data">
+                    <strong><span>As of July 31, 2025 · BJMP Data</span></strong>
+                </div>
+                <h1 class="main-title">Philippine Jail <br/> Risk Profiling <br/> System</h1>
+                <p class="main-description">
+                    Applying K-Means Clustering to BJMP regional jail data across all 18 Philippine
+                    administrative regions — identifying overcrowding severity, drug case concentration,
+                    and crime profiles to support data-driven policy decisions.
+                </p>
+                <div class="main-actions">
+                    <a href="map.html" class="btn-map">View Risk Map</a>
+                    <a href="dashboard.html" class="btn-dashboard">View Dashboard</a>
+                </div>
+                <div class="main-tags">
+                    <span class="tag">K-Means Clustering</span>
+                    <span class="tag">scikit-learn</span>
+                    <span class="tag">BJMP Official Data</span>
+                    <span class="tag">18 Regions</span>
+                    <span class="tag">30 Features</span>
+                </div>
+            </div>
+            <div class="main-stats">
+                <div class="stat-card-users">
+                    <div class="stat-card-value">115,065</div>
+                    <div class="stat-card-label">Total PDL Nationwide</div>
+                    <div class="stat-card-sub">87.32% Detainees · 12.68% Sentenced</div>
+                </div>
+                <div class="stat-card-average">
+                    <div class="stat-card-value">292%</div>
+                    <div class="stat-card-label">Average Congestion Rate</div>
+                    <div class="stat-card-sub">337 of 486 jails are congested</div>
+                </div>
+                <div class="stat-card-PDL">
+                    <div class="stat-card-value">72,683</div>
+                    <div class="stat-card-label">PDL with Drug Cases</div>
+                    <div class="stat-card-sub">63.17% of total PDL population</div>
+                </div>
+                <div class="stat-card-info">
+                    <div class="stat-card-value">167,589</div>
+                    <div class="stat-card-label">Total Crimes Charged</div>
+                    <div class="stat-card-sub">Index + Non-Index across all regions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="overview-strip">
+        <div class="overview-container">
+            <div class="overview-item">
+                <span class="overview-number">18</span>
+                <span class="overview-label">Administrative Regions</span>
+            </div>
+            <div class="overview-divider"></div>
+            <div class="overview-item">
+                <span class="overview-number">486</span>
+                <span class="overview-label">Total BJMP Jails</span>
+            </div>
+            <div class="overview-divider"></div>
+            <div class="overview-item">
+                <span class="overview-number">30</span>
+                <span class="overview-label">Dataset Features</span>
+            </div>
+            <div class="overview-divider"></div>
+            <div class="overview-item">
+                <span class="overview-number">4</span>
+                <span class="overview-label">Risk Clusters</span>
+            </div>
+            <div class="overview-divider"></div>
+            <div class="overview-item">
+                <span class="overview-number">8</span>
+                <span class="overview-label">BJMP Source Tables</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT JAILWATCH DOES -->
+    <section class="section features-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-eyebrow">System Overview</span>
+                <h2 class="section-title">What JailWatch PH Does</h2>
+                <p class="section-subtitle">
+                    A machine learning–powered web application that analyzes BJMP regional jail data
+                    to surface hidden patterns and risk profiles across the Philippines.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">Data Consolidation</h3>
+                    <p class="feature-desc">
+                        Eight BJMP statistical tables — jail population, crimes charged,
+                        congestion rates, drug cases, age profiles, and PDL flow —
+                        merged into one unified dataset of 18 regions × 30 features.
+                    </p>
+                    <a href="about.html" class="feature-link">View Methodology →</a>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">K-Means Clustering</h3>
+                    <p class="feature-desc">
+                        Using Python's scikit-learn, regions are clustered into 4 risk groups
+                        based on 6 key features: total PDL, congestion rate, drug cases,
+                        total crimes, violence indicators, and PDL flow.
+                    </p>
+                    <a href="clusters.html" class="feature-link">View Clusters →</a>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">Interactive Risk Map</h3>
+                    <p class="feature-desc">
+                        Color-coded Philippine regional map showing cluster assignments.
+                        Click any region to instantly view its full jail profile,
+                        congestion status, and cluster classification.
+                    </p>
+                    <a href="map.html" class="feature-link">Open Map →</a>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">Regional Dashboard</h3>
+                    <p class="feature-desc">
+                        Deep-dive into any region's data — PDL population breakdown,
+                        congestion gauge, crime type distribution, drug case ratios,
+                        age bracket profile, and monthly committed vs released flow.
+                    </p>
+                    <a href="dashboard.html" class="feature-link">Open Dashboard →</a>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">Cluster Comparison</h3>
+                    <p class="feature-desc">
+                        Side-by-side comparison of all 4 clusters — what makes each group
+                        distinct, which regions belong to each cluster, and what policy
+                        implications each cluster carries.
+                    </p>
+                    <a href="clusters.html" class="feature-link">Compare Clusters →</a>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">Full Data Table</h3>
+                    <p class="feature-desc">
+                        Complete tabular view of all 30 features across all 18 regions —
+                        sortable, filterable, and exportable. Full transparency
+                        on every data point used in the ML model.
+                    </p>
+                    <a href="dashboard.html" class="feature-link">View Data →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DATASET SECTION -->
+    <section class="section dataset-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-eyebrow">Dataset</span>
+                <h2 class="section-title">30 Features Across 7 Categories</h2>
+                <p class="section-subtitle">
+                    All features extracted from official BJMP statistical reports as of July 31, 2025.
+                </p>
+            </div>
+            <div class="dataset-grid">
+
+                <div class="dataset-cat">
+                    <div class="dataset-cat-header">
+                        <span class="dataset-cat-title">Jail Population</span>
+                        <span class="dataset-cat-count">6 features</span>
+                    </div>
+                    <ul class="dataset-cat-list">
+                        <li>Total PDL (Persons Deprived of Liberty)</li>
+                        <li>Detainee Male / Female</li>
+                        <li>Sentenced Male / Female</li>
+                        <li>Number of Jails per Region</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-cat">
+                    <div class="dataset-cat-header">
+                        <span class="dataset-cat-title">Jail Infrastructure</span>
+                        <span class="dataset-cat-count">3 features</span>
+                    </div>
+                    <ul class="dataset-cat-list">
+                        <li>Number of District Jails</li>
+                        <li>Number of City Jails</li>
+                        <li>Number of Municipal Jails</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-cat">
+                    <div class="dataset-cat-header">
+                        <span class="dataset-cat-title">Crimes Charged</span>
+                        <span class="dataset-cat-count">7 features</span>
+                    </div>
+                    <ul class="dataset-cat-list">
+                        <li>Total Crimes (Index + Non-Index)</li>
+                        <li>Murder · Homicide · Rape</li>
+                        <li>Physical Injury</li>
+                        <li>Robbery · Theft</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-cat">
+                    <div class="dataset-cat-header">
+                        <span class="dataset-cat-title">Congestion</span>
+                        <span class="dataset-cat-count">4 features</span>
+                    </div>
+                    <ul class="dataset-cat-list">
+                        <li>Average Congestion Rate (%)</li>
+                        <li>Ideal Capacity</li>
+                        <li>Actual PDL Population</li>
+                        <li>Number of Congested Jails</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-cat">
+                    <div class="dataset-cat-header">
+                        <span class="dataset-cat-title">PDL Flow</span>
+                        <span class="dataset-cat-count">2 features</span>
+                    </div>
+                    <ul class="dataset-cat-list">
+                        <li>Monthly PDL Committed</li>
+                        <li>Monthly PDL Released</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-cat">
+                    <div class="dataset-cat-header">
+                        <span class="dataset-cat-title">Drug Cases</span>
+                        <span class="dataset-cat-count">3 features</span>
+                    </div>
+                    <ul class="dataset-cat-list">
+                        <li>Total PDL with Drug Cases</li>
+                        <li>Sentenced Drug PDL</li>
+                        <li>Awaiting Trial Drug PDL</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-cat">
+                    <div class="dataset-cat-header">
+                        <span class="dataset-cat-title">Age Profile</span>
+                        <span class="dataset-cat-count">4 features</span>
+                    </div>
+                    <ul class="dataset-cat-list">
+                        <li>Below 18 (Minors)</li>
+                        <li>Age 18–30</li>
+                        <li>Age 31–41</li>
+                        <li>Above 42</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CLUSTER PREVIEW -->
+    <section class="section cluster-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-eyebrow">ML Output</span>
+                <h2 class="section-title">4 Regional Risk Clusters</h2>
+                <p class="section-subtitle">
+                    K-Means clustering groups the 18 Philippine regions into 4 distinct jail risk profiles.
+                </p>
+            </div>
+            <div class="cluster-grid">
+
+                <div class="cluster-card cluster-critical">
+                    <div class="cluster-card-num">Cluster 1</div>
+                    <div class="cluster-card-label">Critical Risk</div>
+                    <p class="cluster-card-desc">
+                        Extremely high PDL population, severe congestion (300%+),
+                        dominant drug cases, high violent crime rates.
+                    </p>
+                    <div class="cluster-card-regions">
+                        <span>NCR</span>
+                        <span>CALABARZON</span>
+                        <span>Region VII</span>
+                    </div>
+                </div>
+
+                <div class="cluster-card cluster-high">
+                    <div class="cluster-card-num">Cluster 2</div>
+                    <div class="cluster-card-label">High Risk</div>
+                    <p class="cluster-card-desc">
+                        Elevated PDL population, significant congestion,
+                        notable drug and crime case volumes.
+                    </p>
+                    <div class="cluster-card-regions">
+                        <span>Region III</span>
+                        <span>Region X</span>
+                    </div>
+                </div>
+
+                <div class="cluster-card cluster-moderate">
+                    <div class="cluster-card-num">Cluster 3</div>
+                    <div class="cluster-card-label">Moderate Risk</div>
+                    <p class="cluster-card-desc">
+                        Moderate PDL counts and congestion levels,
+                        manageable crime and drug case volumes.
+                    </p>
+                    <div class="cluster-card-regions">
+                        <span>NIR</span>
+                        <span>Region XI</span>
+                        <span>Region IX</span>
+                        <span>MIMAROPA</span>
+                        <span>CARAGA</span>
+                        <span>Region VIII</span>
+                        <span>BARMM</span>
+                    </div>
+                </div>
+
+                <div class="cluster-card cluster-manageable">
+                    <div class="cluster-card-num">Cluster 4</div>
+                    <div class="cluster-card-label">Manageable</div>
+                    <p class="cluster-card-desc">
+                        Low PDL population, relatively low congestion,
+                        fewer drug and crime cases compared to other regions.
+                    </p>
+                    <div class="cluster-card-regions">
+                        <span>Region I</span>
+                        <span>Region II</span>
+                        <span>Region V</span>
+                        <span>Region VI</span>
+                        <span>Region XII</span>
+                        <span>CAR</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cluster-cta">
+                <a href="clusters.html" class="btn-map">Explore Full Cluster Analysis</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Explore the Data?</h2>
+            <p class="cta-desc">
+                Dive into the interactive map, explore regional dashboards,
+                and understand what the clustering reveals about Philippine jails.
+            </p>
+            <div class="cta-actions">
+                <a href="map.html" class="btn-map">Open Risk Map</a>
+                <a href="dashboard.html" class="btn-dashboard">View Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">JailWatch <span>PH</span></div>
+                    <p class="footer-desc">
+                        BJMP Regional Jail Risk Profiling System —
+                        a K-Means machine learning project for IT Elective 2.
+                    </p>
+                    <div class="footer-tags">
+                        <span>K-Means Clustering</span>
+                        <span>BJMP Data</span>
+                        <span>Python · scikit-learn</span>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Pages</h4>
+                    <ul class="footer-col-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="map.html">Risk Map</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="clusters.html">Clusters</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Data Sources</h4>
+                    <ul class="footer-col-list">
+                        <li>BJMP Actual Jail Population</li>
+                        <li>BJMP Jurisdiction of Jails</li>
+                        <li>BJMP Crimes Charged</li>
+                        <li>BJMP Congestion Rate</li>
+                        <li>BJMP PDL Age Bracket</li>
+                        <li>BJMP Drug Cases</li>
+                        <li>BJMP PDL Committed & Released</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Dataset Info</h4>
+                    <ul class="footer-col-list">
+                        <li>18 Philippine Regions</li>
+                        <li>30 ML Features</li>
+                        <li>4 Risk Clusters</li>
+                        <li>As of July 31, 2025</li>
+                        <li>Algorithm: K-Means</li>
+                        <li>Elbow + Silhouette Method</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 JailWatch PH · IT Elective 2 Final Project · Data sourced from Bureau of Jail Management and Penology (BJMP) official reports.</p>
+                <p>For academic purposes only. All data is publicly available from BJMP official publications.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

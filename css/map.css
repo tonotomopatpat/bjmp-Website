@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #3C3836;
+    /* background-image:
+        radial-gradient(ellipse at 15% 25%, rgba(180,60,20,0.45) 0%, transparent 55%),
+        linear-gradient(rgba(235,219,178,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(235,219,178,0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px; */
+    color: #EBDBB2;
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+a { text-decoration: none; }
+ul { list-style: none; }
+
+
+.navbar {
+    height: 52px;
+    background-color: #3C3836;
+    border-bottom: 1.5px solid #504945;
+    flex-shrink: 0;
+}
+
+.nav-container {
+    max-width: 100%;
+    height: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #EBDBB2;
+}
+
+.nav-brand span {
+    color: #FE8019;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2px;
+}
+
+.nav-link {
+    display: block;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #A89984;
+    border-radius: 5px;
+    transition: all 0.15s;
+}
+
+.nav-link:hover {
+    color: #EBDBB2;
+    background-color: #504945;
+}
+
+.nav-link.active {
+    color: #FE8019;
+    background-color: #504945;
+    font-weight: 600;
+}
+
+.page-header {
+    padding: 0.7rem 1.5rem;
+    border-bottom: 1px solid #504945;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    background-color: rgba(60,56,54,0.9);
+}
+
+.page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #EBDBB2;
+    letter-spacing: -0.3px;
+}
+
+.page-header p {
+    font-size: 11px;
+    color: #A89984;
+    margin-top: 2px;
+}
+
+.legend {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: #A89984;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-critical   { background-color: #FB4934; }
+.legend-high       { background-color: #FE8019; }
+.legend-moderate   { background-color: #FABD2F; }
+.legend-manageable { background-color: #B8BB26; }
+
+.map-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.map-area {
+    background-color: #2A2827;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ph-map {
+    width: auto;
+    height: 90%;
+    max-height: 560px;
+    cursor: pointer;
+}
+
+/* region shapes */
+.region {
+    stroke: #1D2021;
+    stroke-width: 1.5;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.region:hover {
+    stroke: #EBDBB2;
+    stroke-width: 2.5;
+    filter: brightness(1.2);
+}
+
+.region.selected {
+    stroke: #EBDBB2;
+    stroke-width: 2.5;
+    filter: brightness(1.15);
+}
+
+.r-critical   { fill: #FB4934; }
+.r-high       { fill: #FE8019; }
+.r-moderate   { fill: #FABD2F; }
+.r-manageable { fill: #B8BB26; }
+
+/* map labels */
+.map-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 7.5px;
+    font-weight: 700;
+    fill: #1D2021;
+    pointer-events: none;
+    text-anchor: middle;
+}
+
+.map-label-sub {
+    font-size: 5.5px;
+    font-weight: 500;
+    fill: rgba(29,32,33,0.75);
+}
+
+.sidebar {
+    background-color: #32302F;
+    border-left: 1.5px solid #504945;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sb-default {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    gap: 0.7rem;
+}
+
+.sb-icon {
+    font-size: 2.2rem;
+    opacity: 0.3;
+}
+.sb-default h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #EBDBB2;
+}
+
+.sb-default p {
+    font-size: 11.5px;
+    color: #A89984;
+    line-height: 1.6;
+}
+
+.sb-quick {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #504945;
+}
+
+.sq-item {
+    background-color: #3C3836;
+    border: 1px solid #504945;
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.sq-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #FE8019;
+    display: block;
+    letter-spacing: -0.3px;
+}
+
+.sq-lbl {
+    font-size: 9px;
+    color: #A89984;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+
+/* --- DETAIL STATE --- */
+
+.sb-detail {
+    flex: 1;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+}
+
+.sd-head {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid #504945;
+    flex-shrink: 0;
+}
+
+.sd-back {
+    font-size: 11px;
+    color: #A89984;
+    cursor: pointer;
+    margin-bottom: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s;
+}
+
+.sd-back:hover {
+    color: #FE8019;
+}
+
+.sd-region-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #EBDBB2;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+
+.sd-cluster-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+/* sections */
+.sd-section {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #504945;
+}
+
+.sd-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #A89984;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sd-section-title::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 11px;
+    border-radius: 2px;
+    background-color: #FE8019;
+    flex-shrink: 0;
+}
+
+/* metric grid */
+.sd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.sd-grid-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sd-box {
+    background-color: #3C3836;
+    border: 1px solid #504945;
+    border-radius: 5px;
+    padding: 7px 9px;
+}
+
+.sd-box-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.sd-box-lbl {
+    font-size: 9.5px;
+    color: #A89984;
+}
+
+/* congestion */
+.sd-cong-rate {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #FB4934;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
+}
+
+.cong-track {
+    height: 6px;
+    background-color: #504945;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.cong-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #B8BB26, #FABD2F, #FE8019, #FB4934);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.cong-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #A89984;
+}
+
+.cong-labels strong {
+    color: #EBDBB2;
+}
+
+/* crimes */
+.crime-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.5px 0;
+    border-bottom: 1px solid rgba(80,73,69,0.4);
+    font-size: 11.5px;
+}
+
+.crime-row:last-child {
+    border-bottom: none;
+}
+
+.crime-name { color: #A89984; }
+.crime-val  { font-weight: 700; color: #EBDBB2; }
+
+/* pdl flow */
+.flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+}
+
+.flow-item { text-align: center; }
+
+.flow-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+
+.flow-in  { color: #B8BB26; }
+.flow-out { color: #83A598; }
+
+.flow-lbl { font-size: 10px; color: #A89984; margin-top: 2px; }
+
+.flow-vs {
+    font-size: 11px;
+    color: #504945;
+    font-weight: 700;
+}
+
+.flow-net {
+    font-size: 11px;
+    text-align: center;
+    margin-top: 4px;
+}
+
+/* age bars */
+.age-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.age-lbl {
+    font-size: 10px;
+    color: #A89984;
+    width: 55px;
+    flex-shrink: 0;
+}
+
+.age-track {
+    flex: 1;
+    height: 5px;
+    background-color: #504945;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.age-fill {
+    height: 100%;
+    border-radius: 3px;
+    background-color: #FE8019;
+    transition: width 0.4s ease;
+}
+
+.age-val {
+    font-size: 10px;
+    font-weight: 700;
+    color: #EBDBB2;
+    width: 40px;
+    text-align: right;
+}
+
+/* view full btn */
+.sd-btn {
+    display: block;
+    margin: 0.8rem 1rem 1rem;
+    padding: 10px;
+    background-color: #FE8019;
+    color: #1D2021;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.sd-btn:hover {
+    background-color: #FABD2F;
+}
+
+/* =============================================
+   LEAFLET MAP
+============================================= */
+
+#map {
+    flex: 1;
+    height: 100%;
+    background-color: #2A2827;
+}
+
+.map-tooltip {
+    background-color: #32302F !important;
+    border: 1px solid #504945 !important;
+    border-radius: 6px !important;
+    color: #EBDBB2 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+}
+
+.leaflet-tooltip::before {
+    display: none !important;
+}

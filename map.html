@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">JailWatch <span> PH</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="map.html" class="nav-link">Risk Map</a></li>
+                <!-- <li><a href="dashboard.html" class="nav-link">Dashboard</a></li> -->
+                <li><a href="clusters.html" class="nav-link">Clusters</a></li>
+                <!-- <li><a href="about.html" class="nav-link">About</a></li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-left">
+            <h1>Phlippine Jail Risk Map</h1>
+            <p>Click any refion to view its complete BJMP jail profile</p>
+        </div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot legend-critical">
+                </div>
+                Critical Risk
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot legend-high">
+                </div>High Risk
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot legend-moderate">
+                </div>
+                Moderate
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot legend-manageable">
+                </div>
+                Manageable
+            </div>
+</div>
+    </div>
+
+    <div class="map-layout">
+        <!-- map -->
+        <div id="map"></div>
+
+        <div class="sidebar">
+            <div class="sb-default" id="sbDefault">
+            <h3>Select a region</h3>
+            <p>Click any region on the map to view</p>
+            <div class="sb-quick">
+                <div class="sq-item">
+                    <span class="sq-num">115,065</span>
+                    <span class="sq-lbl">Total PDL</span>
+                </div>
+                <div class="sq-item">
+                    <span class="sq-num">486</span>
+                    <span class="sq-lbl">Total Jails</span>
+                </div>
+                <div class="sq-item">
+                    <span class="sq-num">292%</span>
+                    <span class="sq-lbl">Avg. Congestion</span>
+                </div>
+                <div class="sq-item">
+                    <span class="sq-num">63.17%</span>
+                    <span class="sq-lbl">Drug Cases</span>
+                </div>
+            </div>
+            </div>
+
+            <div class="sb-detail" id="sbDetail">
+
+                <div class="sd-head">
+                    <div class="sd-back" onclick="resetSideBar()">Back</div>
+                    <div class="sd-region-name" id="sdName">-</div>
+                    <div class="sd-cluster-badge" id="sdBadge">-</div>
+                </div> 
+
+                <div class="sd-section">
+                    <div class="sd-section-title"> Jail Population</div>
+                    <div class="sd-grid">
+                        <div class="sd-box">
+                            <div class="sd-box-val" id="sdPDL" style="color:rgb(137, 166, 190)">-</div>
+                            <div class="sd-box-lbl">Total PDL</div></div>
+                            <div class="sd-box"><div class="sd-box-val" id="sdJails" style="color:#FABD2F">—</div><div class="sd-box-lbl">No. of Jails</div></div>
+                            <div class="sd-box"><div class="sd-box-val" id="sdDet" style="color:#A89984">—</div><div class="sd-box-lbl">Detainees</div></div>
+                            <div class="sd-box"><div class="sd-box-val" id="sdSent" style="color:#A89984">—</div><div class="sd-box-lbl">Sentenced</div></div>
+                        </div>
+                </div>
+
+                <div class="sd-section">
+                    <div class="sd-section-title">Congestion Rate</div>
+                    <div class="sd-cong-rate" id="sdCong">—</div>
+                    <div class="cong-track"><div class="cong-fill" id="sdCongBar"></div></div>
+                    <div class="cong-labels">
+                        <span>Ideal: <strong id="sdIdeal">—</strong></span>
+                        <span>Actual: <strong id="sdActual" style="color:#FB4934">—</strong></span>
+                    </div>
+                </div>
+
+                <div class="sd-section">
+                    <div class="sd-section-title">Crimes Charged</div>
+                    <div class="crime-row"><span class="crime-name">Total Crimes</span><span class="crime-val" id="sdTC">—</span></div>
+                    <div class="crime-row"><span class="crime-name">Murder</span><span class="crime-val" id="sdM">—</span></div>
+                    <div class="crime-row"><span class="crime-name">Homicide</span><span class="crime-val" id="sdH">—</span></div>
+                    <div class="crime-row"><span class="crime-name">Rape</span><span class="crime-val" id="sdR">—</span></div>
+                    <div class="crime-row"><span class="crime-name">Robbery</span><span class="crime-val" id="sdRob">—</span></div>
+                    <div class="crime-row"><span class="crime-name">Theft</span><span class="crime-val" id="sdT">—</span></div>
+                </div>
+
+                <div class="sd-section">
+                    <div class="sd-section-title">Drug Cases (RA 9165)</div>
+                    <div class="sd-grid sd-grid-3">
+                        <div class="sd-box"><div class="sd-box-val" id="sdDT" style="color:#FE8019">—</div><div class="sd-box-lbl">Total</div></div>
+                        <div class="sd-box"><div class="sd-box-val" id="sdDS" style="color:#A89984">—</div><div class="sd-box-lbl">Sentenced</div></div>
+                        <div class="sd-box"><div class="sd-box-val" id="sdDA" style="color:#A89984">—</div><div class="sd-box-lbl">Awaiting</div></div>
+                    </div>
+                </div>
+
+                <div class="sd-section">
+                        <div class="sd-section-title">Monthly PDL Flow</div>
+                        <div class="flow-row">
+                            <div class="flow-item"><div class="flow-num flow-in" id="sdCom">—</div><div class="flow-lbl">Committed</div></div>
+                            <div class="flow-vs">VS</div>
+                            <div class="flow-item"><div class="flow-num flow-out" id="sdRel">—</div><div class="flow-lbl">Released</div></div>
+                        </div>
+                        <div class="flow-net" id="sdFlowNet"></div>
+                </div>
+
+
+                <div class="sd-section">
+                    <div class="sd-section-title">PDL Age Profile</div>
+                    <div id="sdAge"></div>
+                </div>
+                <a href="dashboard.html" class="sd-btn">View Full Dashboard</a>
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- script for the javascript and css of the map -->
+    <script src="js/bjmp-data.js"></script>
+    <script src="js/map.js"></script>
+
+</body>
+</html>

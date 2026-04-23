@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clusters — JailWatch PH</title>
+    <link rel="stylesheet" href="css/clusters.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">JailWatch <span>PH</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="map.html" class="nav-link">Risk Map</a></li>
+                <!-- <li><a href="dashboard.html" class="nav-link">Dashboard</a></li> -->
+                <li><a href="clusters.html" class="nav-link active">Clusters</a></li>
+                <!-- <li><a href="about.html" class="nav-link">About</a></li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="page-header-left">
+            <span class="page-eyebrow">K-Means Output · k=4</span>
+            <h1>Cluster Analysis</h1>
+            <p>
+                K-Means clustering groups the 18 Philippine regions into 4 distinct
+                jail risk profiles based on 6 features from BJMP data.
+            </p>
+        </div>
+    </div>
+
+    <div class="method-strip">
+        <div class="method-container">
+            <div class="method-item">
+                <div class="method-num">01</div>
+                <div class="method-text">
+                    <strong>6 Features Selected</strong>
+                    <span>Total PDL, Congestion Rate, Drug Cases, Total Crimes, Violence Index, Net PDL Flow</span>
+                </div>
+            </div>
+            <div class="method-arrow">→</div>
+            <div class="method-item">
+                <div class="method-num">02</div>
+                <div class="method-text">
+                    <strong>StandardScaler Applied</strong>
+                    <span>All features normalized to equal weight before clustering</span>
+                </div>
+            </div>
+            <div class="method-arrow">→</div>
+            <div class="method-item">
+                <div class="method-num">03</div>
+                <div class="method-text">
+                    <strong>Elbow + Silhouette</strong>
+                    <span>k=4 confirmed as optimal number of clusters</span>
+                </div>
+            </div>
+            <div class="method-arrow">→</div>
+            <div class="method-item">
+                <div class="method-num">04</div>
+                <div class="method-text">
+                    <strong>4 Clusters Formed</strong>
+                    <span>Critical, High Risk, Moderate Risk, Manageable</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- cluster card -->
+    <section class="section">
+        <div class="section-container">
+
+            <div class="section-header">
+                <span class="section-eyebrow">Cluster Assignments</span>
+                <h2 class="section-title">The 4 Regional Risk Profiles</h2>
+                <p class="section-subtitle">
+                    Each cluster is defined by the centroid — the average values of the 6 features
+                    used in the K-Means model.
+                </p>
+            </div>
+
+            <div class="cluster-cards">
+
+                <!-- cluster critical -->
+                <div class="cluster-card cc-critical">
+                    <div class="cc-top">
+                        <span class="cc-num">Cluster 0</span>
+                        <span class="cc-badge cc-badge-critical">Critical Risk</span>
+                    </div>
+                    <h3 class="cc-title">Severely Overcrowded,<br/>Highest Crime Burden</h3>
+                    <p class="cc-desc">
+                        This region carries the heaviest jail burden in the Philippines —
+                        the highest PDL population, most severe congestion (403%), and the
+                        largest concentration of drug-related PDLs in the country.
+                        Immediate decongestion and rehabilitation intervention is most urgent here.
+                    </p>
+
+                    <!-- centroid values -->
+                    <div class="cc-features">
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total PDL</span>
+                            <span class="cc-feat-val cc-val-critical">23,084</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Congestion Rate</span>
+                            <span class="cc-feat-val cc-val-critical">403%</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Drug Cases</span>
+                            <span class="cc-feat-val cc-val-critical">14,358</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total Crimes</span>
+                            <span class="cc-feat-val cc-val-critical">30,534</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Violence Index</span>
+                            <span class="cc-feat-val cc-val-critical">1,336</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Net PDL Flow</span>
+                            <span class="cc-feat-val cc-val-critical">-233</span>
+                        </div>
+                    </div>
+
+                    <!-- regions -->
+                    <div class="cc-regions">
+                        <h4 class="cc-regions-title">Regions in this cluster:</h4>
+                        <div class="cc-region-tags">
+                            <span class="cc-tag">NCR</span>
+                        </div>
+                    </div>
+
+                    <!-- policy -->
+                    <div class="cc-policy">
+                        <span class="cc-policy-title">Policy Implication</span>
+                        <p>Priority for BJMP infrastructure expansion, PDL transfer programs,
+                        drug rehabilitation facilities, and pre-trial management reforms.</p>
+                    </div>
+                </div>
+
+                <!-- cluster 1 high risk -->
+                <div class="cluster-card cc-high">
+                    <div class="cc-top">
+                        <span class="cc-num">Cluster 1</span>
+                        <span class="cc-badge cc-badge-high">High Risk</span>
+                    </div>
+                    <h3 class="cc-title">Elevated Load,<br/>Significant Drug Burden</h3>
+                    <p class="cc-desc">
+                        Regions with very high PDL populations and severe congestion.
+                        Drug cases dominate the jail population. These regions require
+                        proactive monitoring and targeted intervention before
+                        conditions worsen.
+                    </p>
+
+                    <div class="cc-features">
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total PDL</span>
+                            <span class="cc-feat-val cc-val-high">17,570</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Congestion Rate</span>
+                            <span class="cc-feat-val cc-val-high">401.5%</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Drug Cases</span>
+                            <span class="cc-feat-val cc-val-high">12,754</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total Crimes</span>
+                            <span class="cc-feat-val cc-val-high">25,823</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Violence Index</span>
+                            <span class="cc-feat-val cc-val-high">1,309</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Net PDL Flow</span>
+                            <span class="cc-feat-val cc-val-high">-20</span>
+                        </div>
+                    </div>
+
+                    <div class="cc-regions">
+                        <h4 class="cc-regions-title">Regions in this cluster:</h4>
+                        <div class="cc-region-tags">
+                            <span class="cc-tag">Region VII</span>
+                            <span class="cc-tag">CALABARZON</span>
+                        </div>
+                    </div>
+
+                    <div class="cc-policy">
+                        <span class="cc-policy-title">Policy Implication</span>
+                        <p>Strengthen drug rehabilitation programs, increase legal aid access
+                        to accelerate pre-trial detainee processing, and expand jail capacity.</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="cluster-card cc-moderate">
+                    <div class="cc-top">
+                        <span class="cc-num">Cluster 2</span>
+                        <span class="cc-badge cc-badge-moderate">Moderate Risk</span>
+                    </div>
+                    <h3 class="cc-title">Above-Average Load,<br/>Manageable Conditions</h3>
+                    <p class="cc-desc">
+                        These regions show moderate-to-high PDL populations with notable
+                        congestion levels. Drug cases remain a concern. Preventive
+                        measures can keep these regions stable.
+                    </p>
+
+                    <div class="cc-features">
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total PDL</span>
+                            <span class="cc-feat-val cc-val-moderate">6,009</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Congestion Rate</span>
+                            <span class="cc-feat-val cc-val-moderate">291.4%</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Drug Cases</span>
+                            <span class="cc-feat-val cc-val-moderate">3,509</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total Crimes</span>
+                            <span class="cc-feat-val cc-val-moderate">9,464</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Violence Index</span>
+                            <span class="cc-feat-val cc-val-moderate">808</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Net PDL Flow</span>
+                            <span class="cc-feat-val cc-val-moderate">+58.6</span>
+                        </div>
+                    </div>
+
+                    <div class="cc-regions">
+                        <h4 class="cc-regions-title">Regions in this cluster:</h4>
+                        <div class="cc-region-tags">
+                            <span class="cc-tag">Region III</span>
+                            <span class="cc-tag">Region VI</span>
+                            <span class="cc-tag">Region V</span>
+                            <span class="cc-tag">Region IX</span>
+                            <span class="cc-tag">NIR</span>
+                        </div>
+                    </div>
+
+                    <div class="cc-policy">
+                        <span class="cc-policy-title">Policy Implication</span>
+                        <p>Focus on preventive measures — regular capacity audits,
+                        community-based rehabilitation options, and sustained legal aid provision.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="cluster-card cc-manageable">
+                    <div class="cc-top">
+                        <span class="cc-num">Cluster 3</span>
+                        <span class="cc-badge cc-badge-manageable">Manageable</span>
+                    </div>
+                    <h3 class="cc-title">Low Load,<br/>Relatively Stable</h3>
+                    <p class="cc-desc">
+                        Regions with the smallest PDL populations and lowest congestion rates.
+                        While no Philippine region is fully uncongested, these areas are
+                        the most stable and require maintenance-level monitoring.
+                    </p>
+
+                    <div class="cc-features">
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total PDL</span>
+                            <span class="cc-feat-val cc-val-manageable">2,679</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Congestion Rate</span>
+                            <span class="cc-feat-val cc-val-manageable">148.3%</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Drug Cases</span>
+                            <span class="cc-feat-val cc-val-manageable">1,422</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Total Crimes</span>
+                            <span class="cc-feat-val cc-val-manageable">4,284</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Avg. Violence Index</span>
+                            <span class="cc-feat-val cc-val-manageable">359</span>
+                        </div>
+                        <div class="cc-feat">
+                            <span class="cc-feat-lbl">Net PDL Flow</span>
+                            <span class="cc-feat-val cc-val-manageable">+15.6</span>
+                        </div>
+                    </div>
+
+                    <div class="cc-regions">
+                        <h4 class="cc-regions-title">Regions in this cluster:</h4>
+                        <div class="cc-region-tags">
+                            <span class="cc-tag">MIMAROPA</span>
+                            <span class="cc-tag">Region II</span>
+                            <span class="cc-tag">Region VIII</span>
+                            <span class="cc-tag">Region X</span>
+                            <span class="cc-tag">Region XI</span>
+                            <span class="cc-tag">Region XII</span>
+                            <span class="cc-tag">CARAGA</span>
+                            <span class="cc-tag">Region I</span>
+                            <span class="cc-tag">CAR</span>
+                            <span class="cc-tag">BARMM</span>
+                        </div>
+                    </div>
+
+                    <div class="cc-policy">
+                        <span class="cc-policy-title">Policy Implication</span>
+                        <p>Maintain current conditions through regular monitoring.
+                        Can serve as pilot areas for community-based rehabilitation models.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- elbow and sillourte -->
+    <section class="section method-section">
+        <div class="section-container">
+
+            <div class="section-header">
+                <span class="section-eyebrow">Optimal k Selection</span>
+                <h2 class="section-title">Elbow Method & Silhouette Score</h2>
+                <p class="section-subtitle">
+                    How we determined the number of clusters to use.
+                </p>
+            </div>
+
+            <div class="method-results-grid">
+
+                <!-- elbow table -->
+                <div class="method-box">
+                    <h3 class="method-box-title">Elbow Method (WCSS)</h3>
+                    <p class="method-box-desc">
+                        WCSS drops sharply from k=2 to k=4, then flattens out.
+                        The bend at k=4 indicates it as the optimal number of clusters.
+                    </p>
+                    <table class="method-table">
+                        <thead>
+                            <tr>
+                                <th>k</th>
+                                <th>WCSS</th>
+                                <th>Drop</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2</td><td>37.3699</td><td>—</td></tr>
+                            <tr><td>3</td><td>24.1717</td><td>-13.20</td></tr>
+                            <tr class="highlight-row"><td><strong>4 ✓</strong></td><td><strong>17.1152</strong></td><td><strong>-7.06</strong></td></tr>
+                            <tr><td>5</td><td>12.7915</td><td>-4.32</td></tr>
+                            <tr><td>6</td><td>9.5759</td><td>-3.22</td></tr>
+                            <tr><td>7</td><td>7.3883</td><td>-2.19</td></tr>
+                            <tr><td>8</td><td>5.7041</td><td>-1.68</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="method-note">
+                        After k=4, the reduction in WCSS becomes smaller — diminishing returns.
+                        This confirms k=4 as the elbow point.
+                    </p>
+                </div>
+
+                <!-- silhouette table -->
+                <div class="method-box">
+                    <h3 class="method-box-title">Silhouette Scores</h3>
+                    <p class="method-box-desc">
+                        Silhouette score measures how well each region fits its assigned cluster.
+                        Higher = better separation. k=4 is chosen for interpretability.
+                    </p>
+                    <table class="method-table">
+                        <thead>
+                            <tr>
+                                <th>k</th>
+                                <th>Score</th>
+                                <th>Quality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2</td><td>0.6256</td><td>High</td></tr>
+                            <tr><td>3</td><td>0.3958</td><td>Moderate</td></tr>
+                            <tr class="highlight-row"><td><strong>4 ✓</strong></td><td><strong>0.3752</strong></td><td><strong>Moderate</strong></td></tr>
+                            <tr><td>5</td><td>0.3737</td><td>Moderate</td></tr>
+                            <tr><td>6</td><td>0.3346</td><td>Low</td></tr>
+                            <tr><td>7</td><td>0.3253</td><td>Low</td></tr>
+                            <tr><td>8</td><td>0.2900</td><td>Low</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="method-note">
+                        While k=2 has the highest silhouette score, it produces only 2 groups
+                        which is not meaningful for policy purposes. k=4 balances statistical
+                        validity with real-world interpretability.
+                    </p>
+                </div>
+
+                <!-- why k=4 -->
+                <div class="method-box method-box-why">
+                    <h3 class="method-box-title">Why k=4?</h3>
+                    <div class="why-item">
+                        <div class="why-num">01</div>
+                        <div class="why-text">
+                            <strong>Elbow Method</strong> shows a clear inflection point at k=4.
+                            Adding more clusters after k=4 yields diminishing improvements in WCSS.
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">02</div>
+                        <div class="why-text">
+                            <strong>Interpretability</strong> — 4 clusters map naturally to
+                            meaningful real-world risk levels: Critical, High, Moderate, Manageable.
+                            This makes the results actionable for BJMP policymakers.
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">03</div>
+                        <div class="why-text">
+                            <strong>k=2 rejected</strong> despite highest silhouette score because
+                            it only produces 2 broad groups (High and Low) which lacks the
+                            granularity needed for meaningful policy differentiation.
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-num">04</div>
+                        <div class="why-text">
+                            <strong>Final Inertia: 17.1152</strong> with k=4 confirms
+                            well-formed, compact clusters across the 18 Philippine regions.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+
+            <div class="section-header">
+                <span class="section-eyebrow">Summary</span>
+                <h2 class="section-title">Cluster Comparison Table</h2>
+                <p class="section-subtitle">
+                    Side-by-side comparison of all 4 clusters using centroid values
+                    from the K-Means output.
+                </p>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th class="th-critical">Cluster 0<br/>Critical</th>
+                            <th class="th-high">Cluster 1<br/>High Risk</th>
+                            <th class="th-moderate">Cluster 2<br/>Moderate</th>
+                            <th class="th-manageable">Cluster 3<br/>Manageable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Number of Regions</td>
+                            <td class="td-critical">1</td>
+                            <td class="td-high">2</td>
+                            <td class="td-moderate">5</td>
+                            <td class="td-manageable">10</td>
+                        </tr>
+                        <tr>
+                            <td>Regions</td>
+                            <td class="td-critical">NCR</td>
+                            <td class="td-high">Region VII, CALABARZON</td>
+                            <td class="td-moderate">Region III, VI, V, IX, NIR</td>
+                            <td class="td-manageable">MIMAROPA, Reg II, VIII, X, XI, XII, CARAGA, Reg I, CAR, BARMM</td>
+                        </tr>
+                        <tr>
+                            <td>Avg. Total PDL</td>
+                            <td class="td-critical">23,084</td>
+                            <td class="td-high">17,570</td>
+                            <td class="td-moderate">6,009</td>
+                            <td class="td-manageable">2,679</td>
+                        </tr>
+                        <tr>
+                            <td>Avg. Congestion Rate</td>
+                            <td class="td-critical">403%</td>
+                            <td class="td-high">401.5%</td>
+                            <td class="td-moderate">291.4%</td>
+                            <td class="td-manageable">148.3%</td>
+                        </tr>
+                        <tr>
+                            <td>Avg. Drug Cases</td>
+                            <td class="td-critical">14,358</td>
+                            <td class="td-high">12,754</td>
+                            <td class="td-moderate">3,509</td>
+                            <td class="td-manageable">1,422</td>
+                        </tr>
+                        <tr>
+                            <td>Avg. Total Crimes</td>
+                            <td class="td-critical">30,534</td>
+                            <td class="td-high">25,823</td>
+                            <td class="td-moderate">9,464</td>
+                            <td class="td-manageable">4,284</td>
+                        </tr>
+                        <tr>
+                            <td>Avg. Violence Index</td>
+                            <td class="td-critical">1,336</td>
+                            <td class="td-high">1,309</td>
+                            <td class="td-moderate">808</td>
+                            <td class="td-manageable">359</td>
+                        </tr>
+                        <tr>
+                            <td>Net PDL Flow</td>
+                            <td class="td-critical">-233</td>
+                            <td class="td-high">-20</td>
+                            <td class="td-moderate">+58.6</td>
+                            <td class="td-manageable">+15.6</td>
+                        </tr>
+                        <tr>
+                            <td>Priority Action</td>
+                            <td class="td-critical">Urgent Intervention</td>
+                            <td class="td-high">Targeted Rehab</td>
+                            <td class="td-moderate">Preventive Monitor</td>
+                            <td class="td-manageable">Maintain + Pilot</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>© 2025 JailWatch PH · IT Elective 2 Final Project · Data sourced from Bureau of Jail Management and Penology (BJMP) official reports.</p>
+                <p>For academic purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
