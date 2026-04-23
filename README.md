@@ -249,4 +249,4 @@ This project is for **academic purposes only**. All BJMP data used is from offic
 
 ---
 
-*IT Elective 2 — Final Project | 2025 | Best Group 🏆*
+*IT Elective 2 — Final Project | 2026 | Best Group 🏆*
