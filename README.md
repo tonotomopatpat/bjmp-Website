@@ -14,7 +14,7 @@
 
 ## 🌐 Live Demo
 
-🔗 **[View Live Site]([https://tonotomopatpat.github.io/bjmp-Website/])**
+🔗 **[View Live Site](https://tonotomopatpat.github.io/bjmp-Website/)**
 
 
 ---
