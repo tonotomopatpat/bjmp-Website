@@ -232,16 +232,6 @@ python kmeans_clustering.py
 
 ---
 
-## 👥 Team
-
-| Name | Role |
-|---|---|
-| [Your Name] | Web Development, Data Merging |
-| [Groupmate Name] | K-Means Clustering, Python Script |
-| [Groupmate Name] | Data Collection, Documentation |
-
-> *Replace with your actual team member names*
-
 ---
 
 ## 📚 Data Source
