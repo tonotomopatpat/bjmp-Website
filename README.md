@@ -16,7 +16,6 @@
 
 🔗 **[View Live Site](https://your-username.github.io/jailwatch-ph)**
 
-> Replace the link above with your actual GitHub Pages URL after deployment.
 
 ---
 
