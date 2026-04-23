@@ -220,17 +220,6 @@ python kmeans_clustering.py
 
 ---
 
-## 🚀 Deploy to GitHub Pages
-
-1. Push all files to your GitHub repository
-2. Go to your repository → **Settings** → **Pages**
-3. Under **Source**, select **main branch** → **/ (root)**
-4. Click **Save**
-5. Your site will be live at:
-```
-https://your-username.github.io/jailwatch-ph
-```
-
 ---
 
 ## 📋 Objectives
